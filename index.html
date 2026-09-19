@@ -3,36 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recrutamento | Avaliação</title>
+    <title>Império Galáctico | Recrutamento</title>
+    <!-- Fonte futurista do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background animado -->
-    <div class="bg-animation"></div>
-
     <main class="glass-container">
         <div class="header-neon">
-            <h1>AVALIAÇÃO DE CANDIDATO</h1>
+            <h1>RECRUTAMENTO IMPERIAL</h1>
+            <p class="subtitle">Esquadrão Stormtrooper</p>
             <div class="neon-line"></div>
         </div>
 
         <form id="formRecrutamento" autocomplete="off">
             <div class="input-group">
                 <input type="text" id="nome" required placeholder=" ">
-                <label for="nome">Nome Completo</label>
+                <label for="nome">Nome do Recruta</label>
             </div>
             
             <div class="input-group">
                 <input type="number" id="idade" required min="1" placeholder=" ">
-                <label for="idade">Idade</label>
+                <label for="idade">Ciclos de Vida (Idade)</label>
             </div>
             
             <div class="input-group">
                 <input type="number" id="altura" step="0.01" required min="0.5" placeholder=" ">
-                <label for="altura">Altura (ex: 1.75)</label>
+                <label for="altura">Estatura (ex: 1.75)</label>
             </div>
             
-            <button type="submit" class="btn-neon">VERIFICAR STATUS</button>
+            <button type="submit" class="btn-neon">VALIDAR CREDENCIAIS</button>
         </form>
     </main>
 
@@ -41,7 +41,7 @@
         <div class="modal-content glass-container">
             <h2 id="modalTitle">Status da Vaga</h2>
             <p id="modalMessage"></p>
-            <button id="btnFecharModal" class="btn-neon outline">OK</button>
+            <button id="btnFecharModal" class="btn-neon outline">ENTENDIDO</button>
         </div>
     </div>
 
