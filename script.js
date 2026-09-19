@@ -4,6 +4,12 @@ const modalMessage = document.getElementById('modalMessage');
 const modalTitle = document.getElementById('modalTitle');
 const btnFecharModal = document.getElementById('btnFecharModal');
 
+// Elementos de Áudio
+const somImpacto = document.getElementById('somImpacto');
+const somFundo = document.getElementById('somFundo');
+let audioIniciado = false;
+
+// --- LÓGICA DE SUBMISSÃO DO FORMULÁRIO ---
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -11,7 +17,7 @@ form.addEventListener('submit', (e) => {
     const idade = parseInt(document.getElementById('idade').value);
     const altura = parseFloat(document.getElementById('altura').value);
 
-    // Limpa as classes de estilo anteriores
+    // Limpa formatações e classes de cores anteriores
     modalMessage.className = '';
     modalTitle.className = '';
 
@@ -23,7 +29,7 @@ form.addEventListener('submit', (e) => {
         modalTitle.textContent = "ACESSO NEGADO";
         modalTitle.classList.add('txt-falha');
         
-        // Brincadeira com a regra de altura baseada na fala da Princesa Leia
+        // Easter egg do Star Wars para recusa por altura
         if (altura < 1.70) {
             modalMessage.innerHTML = `Saudações, <strong>${nome}</strong>.<br><br>Infelizmente você não é apto à vaga.<br><em>"Você não é um pouco baixo para um Stormtrooper?"</em>`;
         } else {
@@ -31,40 +37,72 @@ form.addEventListener('submit', (e) => {
         }
     }
 
-    // Exibe o Modal (Popup)
+    // Exibe o Modal (Popup) na tela
     modalOverlay.classList.add('active');
 });
 
-// Lógica para fechar o Modal ao clicar no botão
-btnFecharModal.addEventListener('click', () => {
-    modalOverlay.classList.remove('active');
-    form.reset();
+// --- LÓGICA PARA FECHAR O MODAL ---
+btnFecharModal.addEventListener('click', () => { 
+    modalOverlay.classList.remove('active'); 
+    form.reset(); 
 });
 
-// Fecha o modal se o usuário clicar na área escura
-modalOverlay.addEventListener('click', (e) => {
+// Fecha o modal se o usuário clicar na área escura em volta da caixa
+modalOverlay.addEventListener('click', (e) => { 
     if (e.target === modalOverlay) {
-        modalOverlay.classList.remove('active');
+        modalOverlay.classList.remove('active'); 
     }
 });
 
-// --- ANIMAÇÃO DO SABRE DE LUZ (IMPACTO) ---
+// --- LÓGICA DO SABRE DE LUZ (Som Otimizado e Rastro) ---
 
-// Escuta quando o usuário aperta o botão do mouse em qualquer lugar da tela
+// 1. Som de Impacto e Faísca ao Clicar
 document.addEventListener('mousedown', (e) => {
-    // Cria uma div nova para ser a faísca
+    
+    // OTIMIZAÇÃO AUDIO: Clona o áudio para permitir sobreposição em cliques rápidos (Polyphony)
+    const somClone = somImpacto.cloneNode();
+    somClone.volume = 0.8;
+    somClone.play().catch(err => console.log("Áudio pendente de interação do usuário."));
+
+    // Limpa o clone da memória do navegador após tocar para não causar vazamento de memória
+    somClone.addEventListener('ended', () => {
+        somClone.remove();
+    });
+
+    // Inicia o som de fundo (Hum contínuo) apenas no primeiro clique na página
+    if (!audioIniciado) {
+        somFundo.volume = 0.3; // Volume ambiente bem baixo
+        somFundo.play().catch(err => console.log("Áudio pendente de interação do usuário."));
+        audioIniciado = true;
+    }
+
+    // Desenha a explosão (faísca) do sabre
     const clash = document.createElement('div');
     clash.classList.add('saber-clash');
-    
-    // Posiciona a faísca exatamente nas coordenadas do cursor (na ponta do sabre)
     clash.style.left = `${e.clientX}px`;
     clash.style.top = `${e.clientY}px`;
-    
-    // Coloca a faísca na tela
     document.body.appendChild(clash);
+    
+    // Remove a explosão da tela após 300ms (tempo exato da animação no CSS)
+    setTimeout(() => clash.remove(), 300);
+});
 
-    // Remove a faísca depois de 300 milissegundos (tempo exato da animação CSS)
-    setTimeout(() => {
-        clash.remove();
-    }, 300);
+// 2. Rastro de Luz ao mover o mouse
+document.addEventListener('mousemove', (e) => {
+    // Cria o rastro de forma moderada (30% das vezes) para otimizar desempenho de processamento
+    if (Math.random() > 0.3) {
+        const trail = document.createElement('div');
+        trail.classList.add('saber-trail');
+        
+        // Pequeno desvio (+2px) para a luz sair exatamente da ponta visual do sabre e não esconder o cursor
+        trail.style.left = `${e.clientX + 2}px`;
+        trail.style.top = `${e.clientY + 2}px`;
+        
+        document.body.appendChild(trail);
+        
+        // Remove a pequena bola de luz após 200ms
+        setTimeout(() => {
+            trail.remove();
+        }, 200);
+    }
 });
