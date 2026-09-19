@@ -7,8 +7,9 @@
 }
 
 body {
-    background-color: #050505;
-    color: rgba(255, 255, 255, 0.85); /* Arial transparente/suave */
+    /* Fundo base sépia claro */
+    background-color: #eaddcf; 
+    color: #4a3b2c; /* Texto marrom escuro */
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -17,12 +18,12 @@ body {
     position: relative;
 }
 
-/* Background com movimento dinâmico */
+/* Background com movimento dinâmico (Tons terrosos) */
 .bg-animation {
     position: absolute;
     width: 200vw;
     height: 200vh;
-    background: radial-gradient(circle at 50% 50%, rgba(20, 0, 40, 0.4), #050505 50%);
+    background: radial-gradient(circle at 50% 50%, rgba(190, 145, 100, 0.3), #eaddcf 50%);
     animation: moveBg 15s infinite alternate ease-in-out;
     z-index: 0;
 }
@@ -32,37 +33,38 @@ body {
     100% { transform: translate(5%, 5%); }
 }
 
-/* Painel estilo Vidro (Glassmorphism) */
+/* Painel estilo Vidro (Glassmorphism Sépia) */
 .glass-container {
     position: relative;
     z-index: 1;
-    background: rgba(25, 25, 30, 0.4);
+    background: rgba(255, 245, 230, 0.5); /* Fundo translúcido quente */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(139, 69, 19, 0.15); /* Borda marrom sutil */
     padding: 40px;
     border-radius: 16px;
     width: 100%;
     max-width: 420px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 
-                inset 0 0 15px rgba(119, 0, 255, 0.05);
+    box-shadow: 0 15px 35px rgba(90, 60, 40, 0.15), 
+                inset 0 0 15px rgba(180, 120, 70, 0.1);
 }
 
 .header-neon h1 {
     font-size: 1.2rem;
     letter-spacing: 2px;
-    font-weight: normal;
+    font-weight: bold;
     text-align: center;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(119, 0, 255, 0.5);
+    color: #4a3b2c;
+    text-shadow: 0 0 10px rgba(210, 120, 50, 0.3);
 }
 
+/* Linha neon adaptada para âmbar/laranja vintage */
 .neon-line {
     width: 50px;
     height: 2px;
-    background: #7700ff;
+    background: #c67a3f;
     margin: 15px auto 30px;
-    box-shadow: 0 0 10px #7700ff, 0 0 20px #7700ff;
+    box-shadow: 0 0 10px #c67a3f, 0 0 20px #c67a3f;
 }
 
 /* Inputs Dinâmicos */
@@ -76,8 +78,8 @@ body {
     padding: 10px 0;
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
+    border-bottom: 1px solid rgba(139, 69, 19, 0.3); /* Linha marrom clara */
+    color: #4a3b2c;
     font-size: 1rem;
     outline: none;
     transition: 0.3s ease;
@@ -87,30 +89,30 @@ body {
     position: absolute;
     top: 10px;
     left: 0;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(74, 59, 44, 0.6);
     pointer-events: none;
     transition: 0.3s ease;
 }
 
-/* Efeito de subir a label quando digita ou foca */
+/* Efeito de subir a label quando digita ou foca (Brilho Âmbar escuro) */
 .input-group input:focus ~ label,
 .input-group input:not(:placeholder-shown) ~ label {
     top: -18px;
     font-size: 0.8rem;
-    color: #00e5ff;
-    text-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
+    color: #b35900;
+    text-shadow: 0 0 5px rgba(179, 89, 0, 0.3);
 }
 
 .input-group input:focus {
-    border-bottom-color: #00e5ff;
-    box-shadow: 0 4px 5px -4px #00e5ff;
+    border-bottom-color: #b35900;
+    box-shadow: 0 4px 5px -4px #b35900;
 }
 
-/* Botões Neon */
+/* Botões Neon (Tons de Cobre/Âmbar) */
 .btn-neon {
     width: 100%;
     padding: 15px;
-    background: #7700ff;
+    background: #a6602e;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -118,37 +120,37 @@ body {
     letter-spacing: 1px;
     cursor: pointer;
     transition: 0.4s ease;
-    box-shadow: 0 0 15px rgba(119, 0, 255, 0.4);
+    box-shadow: 0 0 15px rgba(166, 96, 46, 0.4);
 }
 
 .btn-neon:hover {
-    background: #8811ff;
-    box-shadow: 0 0 25px rgba(119, 0, 255, 0.7), 0 0 40px rgba(119, 0, 255, 0.3);
+    background: #8b4a1c;
+    box-shadow: 0 0 25px rgba(166, 96, 46, 0.7), 0 0 40px rgba(166, 96, 46, 0.3);
     transform: translateY(-2px);
 }
 
 .btn-neon.outline {
     background: transparent;
-    border: 1px solid #00e5ff;
-    color: #00e5ff;
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+    border: 1px solid #b35900;
+    color: #b35900;
+    box-shadow: 0 0 10px rgba(179, 89, 0, 0.2);
     margin-top: 20px;
 }
 
 .btn-neon.outline:hover {
-    background: #00e5ff;
-    color: #050505;
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+    background: #b35900;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(179, 89, 0, 0.5);
 }
 
-/* Sistema de Modal (Popup) */
+/* Sistema de Modal (Popup) - Fundo escurecido marrom */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(40, 30, 20, 0.85); /* Fundo sépia bem escuro */
     backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
@@ -177,15 +179,15 @@ body {
 .modal-content h2 {
     margin-bottom: 15px;
     font-size: 1.5rem;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 .modal-content p {
     font-size: 1.1rem;
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.9);
+    color: #4a3b2c;
 }
 
-/* Classes para cores das mensagens no popup */
-.txt-sucesso { color: #00ff88 !important; text-shadow: 0 0 10px rgba(0, 255, 136, 0.4); }
-.txt-falha { color: #ff3366 !important; text-shadow: 0 0 10px rgba(255, 51, 102, 0.4); }
+/* Classes para cores das mensagens no popup adaptadas para o tom pastel/sépia */
+.txt-sucesso { color: #5d7736 !important; text-shadow: 0 0 10px rgba(93, 119, 54, 0.4); } /* Verde oliva */
+.txt-falha { color: #c94c4c !important; text-shadow: 0 0 10px rgba(201, 76, 76, 0.4); } /* Vermelho tijolo */
