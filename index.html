@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recrutamento | Avaliação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background animado -->
+    <div class="bg-animation"></div>
+
+    <main class="glass-container">
+        <div class="header-neon">
+            <h1>AVALIAÇÃO DE CANDIDATO</h1>
+            <div class="neon-line"></div>
+        </div>
+
+        <form id="formRecrutamento" autocomplete="off">
+            <div class="input-group">
+                <input type="text" id="nome" required placeholder=" ">
+                <label for="nome">Nome Completo</label>
+            </div>
+            
+            <div class="input-group">
+                <input type="number" id="idade" required min="1" placeholder=" ">
+                <label for="idade">Idade</label>
+            </div>
+            
+            <div class="input-group">
+                <input type="number" id="altura" step="0.01" required min="0.5" placeholder=" ">
+                <label for="altura">Altura (ex: 1.75)</label>
+            </div>
+            
+            <button type="submit" class="btn-neon">VERIFICAR STATUS</button>
+        </form>
+    </main>
+
+    <!-- Modal (Popup) -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content glass-container">
+            <h2 id="modalTitle">Status da Vaga</h2>
+            <p id="modalMessage"></p>
+            <button id="btnFecharModal" class="btn-neon outline">OK</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
